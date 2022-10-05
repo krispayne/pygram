@@ -4,23 +4,28 @@ from django.views.generic.detail import DetailView
 from django import forms
 from django.shortcuts import redirect
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 from posts.models import Post, Comment
-
 
 class PostList(ListView):
     model = Post
 
-
 class PostCreate(CreateView):
     model = Post
-    fields = ['image', 'description', 'author']
+    fields = ['image', 'description']
     success_url = '/'
 
+    def form_valid(self, form):
+        Post = form.save(commit=False)
+        Post.author = self.request.user
+        # app_model.user = User.objects.get(user=self.request.user) # Or explicit model 
+        Post.save()
+        return super().form_valid(form)
 
 class CommentForm(forms.Form):
     comment = forms.CharField()
-
 
 class PostDetail(DetailView):
     model = Post

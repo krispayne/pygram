@@ -1,9 +1,18 @@
 {% extends 'posts/base.html' %}
 {% block content %}
-    <a href="{% url 'new' %}"><h1>Create new post</h1></a>
-    {% for post in object_list %}
-    <strong>{{ post.author.username }}</strong><br/>
-    <img src="{{ post.image.url }}" width=400 height=400>
-    <p><em>{{ post.created }}</em><br/>{{ post.description }}</p>
+
+    <div class='create'>
+        <h1>
+            <a href="{% url 'new' %}">add new</a>
+        </h1>
+    </div>
+    {% for post in object_list reversed %}
+    <div class='post'>
+        <strong class='username'>{{ post.author.username }}</strong><br />
+        <img src="{{ post.image.url }}">
+        <p class='description'><em>{{ post.created }}</em><br/>{{ post.description }}</p>
+        <hr />
+    </div>
     {% endfor %}
+    
 {% endblock %}

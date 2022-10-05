@@ -1,12 +1,17 @@
 {% extends 'posts/base.html' %}
+{% load crispy_forms_tags %}
+
 {% block content %}
+
 <h1>Create new post</h1>
-<form action="{% url 'new' %}" method="POST" enctype="multipart/form-data">
-  {% csrf_token %}
-  {{ form.as_p }}
-  <input type="submit" value="Post">
-</form>
+<div class="mx-auto">
+  <div class="form-group">
+    <form action="{% url 'new' %}" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+      {{ form | crispy }}
+      <button type="submit" class="btn btn-primary w-auto my-3">Post</button>
+    </form>
+  </div>
+</div>
+
 {% endblock %}
-
-
-
