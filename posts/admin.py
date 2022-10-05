@@ -1,4 +1,7 @@
 from django.contrib import admin
 from posts.models import Post
 
-admin.site.register(Post, admin.ModelAdmin)
+class PostAdmin(admin.ModelAdmin):
+    list_display = ['id', 'author', 'created', 'modified']
+
+admin.site.register(Post, PostAdmin)
