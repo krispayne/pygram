@@ -155,10 +155,7 @@ STATICFILES_DIRS = [
     BASE_DIR / 'static',
     '/workspace/static',
 ]
-if not DEBUG:
-    STATIC_ROOT = '/workspace/staticfiles'
-else:
-    STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
