@@ -161,7 +161,6 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 from .cdn.conf import * # noqa
 
-
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
 LOGIN_URL = '/login'
