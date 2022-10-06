@@ -20,12 +20,11 @@ class PostCreate(CreateView):
     def form_valid(self, form):
         Post = form.save(commit=False)
         Post.author = self.request.user
-        # app_model.user = User.objects.get(user=self.request.user) # Or explicit model 
         Post.save()
         return super().form_valid(form)
 
 class CommentForm(forms.Form):
-    comment = forms.CharField()
+    comment = forms.CharField(widget=forms.Textarea(attrs={'class': 'form-control', 'rows': '4'}))
 
 class PostDetail(DetailView):
     model = Post
@@ -46,4 +45,4 @@ class PostDetail(DetailView):
             comment.save()
         else:
             raise Exception
-        return redirect(reverse('detail', args=[self.get_object().id]))
+        return redirect(reverse('post-detail', args=[self.get_object().id]))

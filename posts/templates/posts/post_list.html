@@ -9,8 +9,8 @@
     {% for post in object_list reversed %}
     <div class='post'>
         <strong class='username'>{{ post.author.username }}</strong><br />
-        <img src="{{ post.image.url }}">
-        <p class='description'><em>{{ post.created }}</em><br/>{{ post.description }}</p>
+        <a href="{{ post.get_absolute_url }}"><img src="{{ post.image.url }}"></a>
+        <p class='description'><em><a href="{{ post.get_absolute_url }}">{{ post.created }}</a></em><br/>{{ post.description }}</p>
         <hr />
     </div>
     {% endfor %}
