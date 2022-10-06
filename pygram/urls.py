@@ -39,3 +39,4 @@ urlpatterns = [
     path('login/', CustomLoginView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
