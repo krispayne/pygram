@@ -32,9 +32,9 @@ from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', PostList.as_view(), name='list'),
+    path('', login_required(PostList.as_view()), name='list'),
     path('new/', login_required(PostCreate.as_view()), name='new'),
-    path('posts/<pk>/', PostDetail.as_view(), name='detail'),
+    path('posts/<pk>/', login_required(PostDetail.as_view()), name='detail'),
     path('signup/', SignUpView.as_view(), name='signup'),
     path('login/', CustomLoginView.as_view(), name='login'),
     path('logout/', LogoutView.as_view(), name='logout'),
