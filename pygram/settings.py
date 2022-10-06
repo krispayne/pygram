@@ -154,7 +154,7 @@ STATIC_URL = '/static/'
 # STATICFILES_DIRS = [BASE_DIR / "static",]
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 MEDIA_URL = '/media/'
-MEDIA_ROOT = STATIC_ROOT
+MEDIA_ROOT = ''
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
