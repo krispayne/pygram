@@ -10,7 +10,9 @@
     <div class='post'>
         <strong class='username'>{{ post.author.username }}</strong><br />
         <a href="{{ post.get_absolute_url }}"><img src="{{ post.image.url }}"></a>
-        <p class='description'><em><a href="{{ post.get_absolute_url }}">{{ post.created }}</a></em><br/>{{ post.description }}</p>
+        <p class='description'>{{ post.description }}</p>
+        <p class='description'><a href="{{ post.get_absolute_url }}">{{ post.comment_set.count }} comments</a></p>
+        <p class='description'><a href="{{ post.get_absolute_url }}"><em>{{ post.created }}</em></a></p>
         <hr />
     </div>
     {% endfor %}
